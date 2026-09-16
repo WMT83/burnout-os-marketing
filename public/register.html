@@ -272,7 +272,7 @@ src="https://www.facebook.com/tr?id=1005751582432108&ev=PageView&noscript=1"/></
         <button type="button" class="choice" data-aud="individual" onclick="setAudience('individual')">
           <div class="choice-info">
             <div class="choice-name">Myself, as an individual clinician</div>
-            <div class="choice-desc">Card payment. Pay in full or across five monthly payments.</div>
+            <div class="choice-desc">Card payment. Pay in full or across three monthly payments.</div>
           </div>
           <span class="choice-mark">Select</span>
         </button>
@@ -466,7 +466,7 @@ src="https://www.facebook.com/tr?id=1005751582432108&ev=PageView&noscript=1"/></
   var SUPABASE_URL = 'https://kvsirypfqtnymooxicti.supabase.co';
   var SUPABASE_ANON_KEY = 'sb_publishable_Azjgh5OVpFG2Z2oyQqt0Ig_E0tVk2W8';
   var TOUR_SLUG = 'sa-2026';
-  var EARLY_BIRD_END = '2026-08-31';
+  var EARLY_BIRD_END = '2026-09-21';
 
   // Card lines mirror public.tour_cohorts on kvsirypfqtnymooxicti:
   // start_date/end_date, act_workshop_on, act_delivery_format,
@@ -529,15 +529,15 @@ src="https://www.facebook.com/tr?id=1005751582432108&ev=PageView&noscript=1"/></
   // Kept as a kill switch rather than a readiness gate.
   var ONLINE_INSTALMENT_ENABLED = true;
 
-  var INSTALMENT_CYCLES = { individual: 5, online: 3 };
+  var INSTALMENT_CYCLES = { individual: 3, online: 3 };
 
   var PRICES = {
     online_instalment_early_bird: 2050,
     online_instalment_standard: 2400,
     individual_early_bird: 8950,
     individual_standard: 10950,
-    individual_instalment_early_bird: 1890,
-    individual_instalment_standard: 2250,
+    individual_instalment_early_bird: 2990,
+    individual_instalment_standard: 3650,
     online_early_bird: 5950,
     online_standard: 6950,
     corporate_early_bird: 10950,
@@ -570,7 +570,7 @@ src="https://www.facebook.com/tr?id=1005751582432108&ev=PageView&noscript=1"/></
     return isOnline(key) ? INSTALMENT_CYCLES.online : INSTALMENT_CYCLES.individual;
   }
   // Both windows carry an online instalment price, so the option survives
-  // the 1 September tier flip rather than disappearing with the early bird.
+  // the tier flip rather than disappearing with the early bird.
   function instalmentOffered(key) {
     if (!key) return false;
     if (isOnline(key)) return ONLINE_INSTALMENT_ENABLED;
@@ -611,7 +611,7 @@ src="https://www.facebook.com/tr?id=1005751582432108&ev=PageView&noscript=1"/></
 
   // ── Rendering ────────────────────────────────────────────────
   function renderTierBadge() {
-    el('tierBadge').textContent = isEarlyBird() ? 'Early bird until 31 August' : 'Standard pricing';
+    el('tierBadge').textContent = isEarlyBird() ? 'Early bird until 21 September' : 'Standard pricing';
   }
 
   function renderCohorts() {
