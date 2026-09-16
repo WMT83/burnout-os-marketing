@@ -537,7 +537,7 @@ src="https://www.facebook.com/tr?id=1005751582432108&ev=PageView&noscript=1"/></
     individual_early_bird: 8950,
     individual_standard: 10950,
     individual_instalment_early_bird: 2990,
-    individual_instalment_standard: 3650,
+    individual_instalment_standard: 2990,
     online_early_bird: 5950,
     online_standard: 6950,
     corporate_early_bird: 10950,
@@ -649,6 +649,13 @@ src="https://www.facebook.com/tr?id=1005751582432108&ev=PageView&noscript=1"/></
     var instTotal = inst * cycles;
     var cycleWord = cycles === 3 ? 'Three' : 'Five';
     var afterWord = cycles === 3 ? 'two months' : 'four months';
+    // Once the early bird closes the in-person plan totals R8,970 against a
+    // R10,950 once-off rate, so the difference is a discount, not a surcharge.
+    // Formatting it as one printed "a R-1,980 payment plan surcharge".
+    var diff = instTotal - full;
+    var diffPhrase = diff > 0 ? 'a ' + zar(diff) + ' payment plan surcharge'
+                   : diff < 0 ? zar(-diff) + ' less than the once-off rate'
+                   : 'the same as the once-off rate';
     wrap.innerHTML =
       '<button type="button" class="choice' + (S.instalment === false ? ' selected' : '') + '" data-pay="full">' +
         '<div class="choice-info"><div class="choice-name">Pay in full</div>' +
@@ -658,7 +665,7 @@ src="https://www.facebook.com/tr?id=1005751582432108&ev=PageView&noscript=1"/></
       '</button>' +
       '<button type="button" class="choice' + (S.instalment === true ? ' selected' : '') + '" data-pay="instalment">' +
         '<div class="choice-info"><div class="choice-name">' + cycleWord + ' monthly payments</div>' +
-        '<div class="choice-desc">Today, then monthly for ' + afterWord + '. ' + zar(instTotal) + ' in total, a ' + zar(instTotal - full) + ' payment plan surcharge.</div></div>' +
+        '<div class="choice-desc">Today, then monthly for ' + afterWord + '. ' + zar(instTotal) + ' in total, ' + diffPhrase + '.</div></div>' +
         '<div class="choice-side"><div class="choice-amt">' + zar(inst) + '</div>' +
         '<div class="choice-amt-sub">per month &times; ' + cycles + '</div></div>' +
       '</button>';
