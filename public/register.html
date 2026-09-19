@@ -228,10 +228,10 @@ src="https://www.facebook.com/tr?id=1005751582432108&ev=PageView&noscript=1"/></
 
     <!-- Intro -->
     <div class="card">
-      <p class="lede">Register for <strong>The Burnout Reset</strong>, a clinician's programme. Two intensive days. A separate ACT for Burnout day on 12 October. Eight weeks of integration with facilitated peer supervision.</p>
+      <p class="lede">Register for <strong>The Burnout Reset</strong>. Choose the complete clinical pathway, or the two-day in-person intensive with facilitated integration and add ACT for Burnout separately if you want it.</p>
       <ul class="inc">
         <li>The eight-session Performance Reset protocol, worked through as a clinician</li>
-        <li>ACT for Burnout workshop on 12 October, included in the price. A separate day, not part of the two intensive days.</li>
+        <li>ACT for Burnout on Monday, 12 October is included in the complete pathway and excluded from the intensive-only option.</li>
         <li>Three facilitated peer supervision sessions on your own caseload. 28 October, 18 November, and 3 December, each at 08:00 SAST.</li>
         <li>32 CPD points across 30 contact hours, in collaboration with PsySSA</li>
         <li>All frameworks and worksheets to take back to practice</li>
@@ -272,7 +272,7 @@ src="https://www.facebook.com/tr?id=1005751582432108&ev=PageView&noscript=1"/></
         <button type="button" class="choice" data-aud="individual" onclick="setAudience('individual')">
           <div class="choice-info">
             <div class="choice-name">Myself, as an individual clinician</div>
-            <div class="choice-desc">Card payment. Pay in full or across three monthly payments.</div>
+            <div class="choice-desc">Card payment. Choose your pathway, then pay in full or by the available monthly plan.</div>
           </div>
           <span class="choice-mark">Select</span>
         </button>
@@ -287,10 +287,32 @@ src="https://www.facebook.com/tr?id=1005751582432108&ev=PageView&noscript=1"/></
       <div class="ferr" id="e-audience" style="margin-top:10px"><svg width="11" height="11" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><line x1="12" y1="8" x2="12" y2="12"/><line x1="12" y1="16" x2="12.01" y2="16"/></svg>Choose how you are registering.</div>
     </div>
 
+    <!-- Programme -->
+    <div class="card hidden" id="cardProgramme">
+      <div class="stitle">Choose your pathway</div>
+      <div class="choice-set">
+        <button type="button" class="choice" data-programme="complete" onclick="setProgramme('complete')">
+          <div class="choice-info">
+            <div class="choice-name">Complete clinical pathway</div>
+            <div class="choice-desc">Two intensive days, ACT for Burnout on 12 October, and three facilitated peer-supervision sessions.</div>
+          </div>
+          <span class="choice-mark">Select</span>
+        </button>
+        <button type="button" class="choice" data-programme="intensive" onclick="setProgramme('intensive')">
+          <div class="choice-info">
+            <div class="choice-name">Two-day intensive + integration</div>
+            <div class="choice-desc">Johannesburg or Cape Town in person. ACT for Burnout is not included and can be booked separately.</div>
+          </div>
+          <div class="choice-side"><div class="choice-amt">R6,950</div><div class="choice-amt-sub">or 2 &times; R3,475</div></div>
+        </button>
+      </div>
+      <div class="ferr" id="e-programme" style="margin-top:10px"><svg width="11" height="11" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><line x1="12" y1="8" x2="12" y2="12"/><line x1="12" y1="16" x2="12.01" y2="16"/></svg>Choose a pathway.</div>
+    </div>
+
     <!-- Format -->
     <div class="card hidden" id="cardFormat">
       <div class="stitle">Choose your format</div>
-      <p class="lede" style="margin-bottom:16px;">Every format includes the same components. Two intensive days. The ACT for Burnout workshop, run as a separate day on 12 October. Eight weeks of integration to 6 December, with peer supervision on 28 October, 18 November, and 3 December, each at 08:00 SAST.</p>
+      <p class="lede" style="margin-bottom:16px;">Choose your intensive dates and delivery format. The R6,950 intensive-only offer is available in person in Johannesburg and Cape Town; the complete pathway is also available live online.</p>
       <div class="choice-set" id="cohortSet"></div>
       <div class="ferr" id="e-cohort" style="margin-top:10px"><svg width="11" height="11" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><line x1="12" y1="8" x2="12" y2="12"/><line x1="12" y1="16" x2="12.01" y2="16"/></svg>Choose a format.</div>
     </div>
@@ -299,7 +321,7 @@ src="https://www.facebook.com/tr?id=1005751582432108&ev=PageView&noscript=1"/></
     <div class="card hidden" id="cardPayment">
       <div class="stitle">Choose how you pay</div>
       <div class="choice-set" id="paymentSet"></div>
-      <p class="help" style="margin-top:12px;">Completed the ACT for Burnout workshop already? Enter <strong>ACTCREDIT26</strong> in the promotion code field at checkout to apply your R1,950 credit. The credit applies to the Johannesburg and Cape Town in-person formats. Valid until 10 October.</p>
+      <p class="help" id="completeCreditHelp" style="margin-top:12px;">Completed the ACT for Burnout workshop already? Enter <strong>ACTCREDIT26</strong> in the promotion code field at checkout to apply your R1,950 credit. The credit applies to the Johannesburg and Cape Town in-person formats. Valid until 10 October.</p>
       <div class="ferr" id="e-payment" style="margin-top:10px"><svg width="11" height="11" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><line x1="12" y1="8" x2="12" y2="12"/><line x1="12" y1="16" x2="12.01" y2="16"/></svg>Choose a payment option.</div>
     </div>
 
@@ -541,11 +563,13 @@ src="https://www.facebook.com/tr?id=1005751582432108&ev=PageView&noscript=1"/></
     online_early_bird: 5950,
     online_standard: 6950,
     corporate_early_bird: 10950,
-    corporate_standard: 12950
+    corporate_standard: 12950,
+    intensive_modular: 6950,
+    intensive_modular_instalment: 3475
   };
 
   // ── State ────────────────────────────────────────────────────
-  var S = { audience: null, cohortKey: null, instalment: null };
+  var S = { audience: null, programme: null, cohortKey: null, instalment: null };
 
   // ── Helpers ──────────────────────────────────────────────────
   function isEarlyBird() {
@@ -559,14 +583,17 @@ src="https://www.facebook.com/tr?id=1005751582432108&ev=PageView&noscript=1"/></
   function show(id, on) { el(id).classList.toggle('hidden', !on); }
 
   function individualFull(key) {
+    if (S.programme === 'intensive') return PRICES.intensive_modular;
     if (isOnline(key)) return isEarlyBird() ? PRICES.online_early_bird : PRICES.online_standard;
     return isEarlyBird() ? PRICES.individual_early_bird : PRICES.individual_standard;
   }
   function individualInstalment(key) {
+    if (S.programme === 'intensive') return PRICES.intensive_modular_instalment;
     if (isOnline(key)) return isEarlyBird() ? PRICES.online_instalment_early_bird : PRICES.online_instalment_standard;
     return isEarlyBird() ? PRICES.individual_instalment_early_bird : PRICES.individual_instalment_standard;
   }
   function instalmentCycles(key) {
+    if (S.programme === 'intensive') return 2;
     return isOnline(key) ? INSTALMENT_CYCLES.online : INSTALMENT_CYCLES.individual;
   }
   // Both windows carry an online instalment price, so the option survives
@@ -619,15 +646,20 @@ src="https://www.facebook.com/tr?id=1005751582432108&ev=PageView&noscript=1"/></
     wrap.innerHTML = '';
     Object.keys(COHORTS).forEach(function (key) {
       var c = COHORTS[key];
+      if (S.programme === 'intensive' && c.online) return;
       var price = S.audience === 'corporate' ? corporatePerSeat(key) : individualFull(key);
-      var sub = S.audience === 'corporate' ? 'per place' : (isEarlyBird() ? 'early bird' : 'standard');
+      var sub = S.audience === 'corporate' ? 'per place'
+        : S.programme === 'intensive' ? 'intensive-only offer'
+        : (isEarlyBird() ? 'early bird' : 'standard');
       var b = document.createElement('button');
       b.type = 'button';
       b.className = 'choice' + (S.cohortKey === key ? ' selected' : '');
       b.innerHTML =
         '<div class="choice-info">' +
           '<div class="choice-name">' + (c.title || c.label) + '</div>' +
-          c.lines.map(function (l) {
+          c.lines.filter(function (l) {
+            return !(S.programme === 'intensive' && l[0] === 'ACT for Burnout');
+          }).map(function (l) {
             return '<div class="choice-desc"><strong>' + l[0] + ':</strong> ' + l[1] + '</div>';
           }).join('') +
           '<div class="choice-tag">' + c.seatsTotal + ' places</div>' +
@@ -647,8 +679,8 @@ src="https://www.facebook.com/tr?id=1005751582432108&ev=PageView&noscript=1"/></
     var inst = individualInstalment(S.cohortKey);
     var cycles = instalmentCycles(S.cohortKey);
     var instTotal = inst * cycles;
-    var cycleWord = cycles === 3 ? 'Three' : 'Five';
-    var afterWord = cycles === 3 ? 'two months' : 'four months';
+    var cycleWord = cycles === 2 ? 'Two' : cycles === 3 ? 'Three' : 'Five';
+    var afterWord = cycles === 2 ? 'one month' : cycles === 3 ? 'two months' : 'four months';
     // Once the early bird closes the in-person plan totals R8,970 against a
     // R10,950 once-off rate, so the difference is a discount, not a surcharge.
     // Formatting it as one printed "a R-1,980 payment plan surcharge".
@@ -680,12 +712,17 @@ src="https://www.facebook.com/tr?id=1005751582432108&ev=PageView&noscript=1"/></
   }
 
   function renderSummary() {
-    if (!S.audience || !S.cohortKey) { show('cardSummary', false); return; }
+    if (!S.audience || !S.cohortKey || (S.audience === 'individual' && !S.programme)) { show('cardSummary', false); return; }
     var c = COHORTS[S.cohortKey];
     var body = el('summaryBody');
     var rows = '';
     var fine = '';
 
+    if (S.audience === 'individual') {
+      rows += row('Pathway', S.programme === 'intensive'
+        ? 'Two-day intensive + integration (ACT excluded)'
+        : 'Complete clinical pathway (ACT included)');
+    }
     rows += row('Format', c.label + ' &middot; ' + c.dates);
 
     if (S.audience === 'individual') {
@@ -693,8 +730,8 @@ src="https://www.facebook.com/tr?id=1005751582432108&ev=PageView&noscript=1"/></
       if (S.instalment === true) {
         var inst = individualInstalment(S.cohortKey);
         var cycles = instalmentCycles(S.cohortKey);
-        var cycleWord = cycles === 3 ? 'Three' : 'Five';
-        var afterWord = cycles === 3 ? 'two months' : 'four months';
+        var cycleWord = cycles === 2 ? 'Two' : cycles === 3 ? 'Three' : 'Five';
+        var afterWord = cycles === 2 ? 'one month' : cycles === 3 ? 'two months' : 'four months';
         rows += row('Payment', cycleWord + ' monthly payments of ' + zar(inst));
         rows += row('Total commitment', zar(inst * cycles), true);
         fine = 'Charged in ZAR, VAT inclusive. The first payment is taken today, then monthly for ' + afterWord + '.';
@@ -738,6 +775,8 @@ src="https://www.facebook.com/tr?id=1005751582432108&ev=PageView&noscript=1"/></
   // ── Flow control ─────────────────────────────────────────────
   function setAudience(a) {
     S.audience = a;
+    S.programme = a === 'corporate' ? 'complete' : null;
+    S.cohortKey = null;
     S.instalment = null;
     Array.prototype.forEach.call(document.querySelectorAll('[data-aud]'), function (b) {
       var on = b.dataset.aud === a;
@@ -745,7 +784,8 @@ src="https://www.facebook.com/tr?id=1005751582432108&ev=PageView&noscript=1"/></
       b.querySelector('.choice-mark').textContent = on ? 'Selected' : 'Select';
     });
     clearErr('e-audience');
-    show('cardFormat', true);
+    show('cardProgramme', a === 'individual');
+    show('cardFormat', a === 'corporate');
     show('cardAttendee', a === 'individual');
     show('cardCompany', a === 'corporate');
     show('cardPlaces', a === 'corporate');
@@ -761,6 +801,24 @@ src="https://www.facebook.com/tr?id=1005751582432108&ev=PageView&noscript=1"/></
   }
   window.setAudience = setAudience;
 
+  function setProgramme(option) {
+    S.programme = option;
+    S.cohortKey = null;
+    S.instalment = null;
+    Array.prototype.forEach.call(document.querySelectorAll('[data-programme]'), function (b) {
+      var on = b.dataset.programme === option;
+      b.classList.toggle('selected', on);
+      var mark = b.querySelector('.choice-mark');
+      if (mark) mark.textContent = on ? 'Selected' : 'Select';
+    });
+    clearErr('e-programme');
+    show('cardFormat', true);
+    renderCohorts();
+    applyPaymentVisibility();
+    renderSummary();
+  }
+  window.setProgramme = setProgramme;
+
   function selectCohort(key) {
     S.cohortKey = key;
     if (!instalmentOffered(key)) S.instalment = false;
@@ -773,6 +831,7 @@ src="https://www.facebook.com/tr?id=1005751582432108&ev=PageView&noscript=1"/></
   function applyPaymentVisibility() {
     var needsPayment = S.audience === 'individual' && S.cohortKey && instalmentOffered(S.cohortKey);
     show('cardPayment', needsPayment);
+    show('completeCreditHelp', needsPayment && S.programme === 'complete');
     if (needsPayment) renderPayment();
   }
 
@@ -780,7 +839,8 @@ src="https://www.facebook.com/tr?id=1005751582432108&ev=PageView&noscript=1"/></
   function validate() {
     var errs = [];
     if (!S.audience) errs.push({ id: 'e-audience', msg: 'Choose how you are registering.' });
-    if (S.audience && !S.cohortKey) errs.push({ id: 'e-cohort', msg: 'Choose a format.' });
+    if (S.audience === 'individual' && !S.programme) errs.push({ id: 'e-programme', msg: 'Choose a pathway.' });
+    if (S.audience && (S.audience === 'corporate' || S.programme) && !S.cohortKey) errs.push({ id: 'e-cohort', msg: 'Choose a format.' });
 
     if (S.audience === 'individual') {
       if (S.cohortKey && instalmentOffered(S.cohortKey) && S.instalment === null) {
@@ -849,6 +909,7 @@ src="https://www.facebook.com/tr?id=1005751582432108&ev=PageView&noscript=1"/></
         tour_slug: TOUR_SLUG,
         cohort_id: cohort.id,
         audience_type: 'individual',
+        programme_option: S.programme || 'complete',
         instalment_plan: S.instalment === true,
         attendee: {
           full_name: v('fullName'),
