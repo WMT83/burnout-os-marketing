@@ -156,7 +156,7 @@ src="https://www.facebook.com/tr?id=1005751582432108&ev=PageView&noscript=1"/></
         <li>16 CPD points, and the ACT in Practice on-demand course included</li>
         <li>Recording access afterwards, and a full materials pack</li>
       </ul>
-      <p class="lede" style="margin-top:16px;"><strong>Already registered for The Burnout Reset?</strong> The 12 October day is included in your programme and there is nothing further to pay. The 18 September date is separate, and open to you at the price below. <a href="/register" style="color:var(--ember);text-decoration:none;">See The Burnout Reset</a>.</p>
+      <p class="lede" style="margin-top:16px;"><strong>Already registered for The Burnout Reset?</strong> If you chose the complete pathway, the 12 October day is included and there is nothing further to pay. If you chose the two-day intensive + integration pathway, ACT is separate and you can book it below. <a href="/register" style="color:var(--ember);text-decoration:none;">Compare the pathways</a>.</p>
     </div>
 
     <div class="card">
@@ -209,7 +209,7 @@ src="https://www.facebook.com/tr?id=1005751582432108&ev=PageView&noscript=1"/></
 
     <div class="card">
       <div class="stitle">Looking for the full programme</div>
-      <p class="lede">The Burnout Reset is a two-day intensive plus an eight-week applied arc and three peer supervision sessions. It carries 32 CPD points and includes the 12 October ACT day in the price. Johannesburg 10 and 11 October, Cape Town 16 and 17 October, or live online on either date.</p>
+      <p class="lede">The complete Burnout Reset pathway includes the two-day intensive, this ACT workshop, and three peer-supervision sessions. The R6,950 in-person intensive + integration pathway excludes ACT and lets you book this Monday workshop separately.</p>
       <p class="lede" style="margin-top:10px;"><a href="/register" style="color:var(--ember);text-decoration:none;font-weight:600;">See The Burnout Reset</a></p>
     </div>
 
@@ -245,20 +245,17 @@ src="https://www.facebook.com/tr?id=1005751582432108&ev=PageView&noscript=1"/></
   // Without it a network blip during the early bird week means the page
   // renders no way to buy anything. Keep it in step when dates change.
   //
-  // The 12 October Johannesburg in-person cohort is deliberately absent. It is
-  // held until 18 September so the free PsySSA room stays available to Reset
-  // registrants, who already hold that day in their price. The live read drops
-  // it because the cohort is on_hold, so a fallback entry would be the only
-  // place it could still appear, and create-tour-checkout would refuse the
-  // resulting purchase at the payment step. Restore it only once the hold on
-  // tours.metadata.standalone_in_person_hold has lifted.
+  // The 12 October Johannesburg cohort is open in the existing PsySSA room.
+  // Fourteen standalone places preserve the six-seat allocation already held
+  // for complete-pathway Reset participants.
   var FALLBACK = [
-    { tour_slug:'act-burnout-sep-2026', cohort_id:'f8cdc32f-8917-4a3b-9ebf-fa8468b4ce30',
-      city:'Online', date:'2026-09-18', format:'Live online', start:'08:30', end:'17:00',
-      amount:195000, earlyBird:true, ebUntil:'2026-09-11', seatsLeft:198, capped:false },
+    { tour_slug:'act-burnout-oct-2026', cohort_id:'38c0d95a-306b-4aa8-aac3-d0a5f59e5f64',
+      city:'Johannesburg', date:'2026-10-12', format:'Johannesburg, in person · PsySSA',
+      start:'08:30', end:'17:00', amount:295000, earlyBird:false, ebUntil:null,
+      seatsLeft:14, capped:true },
     { tour_slug:'act-burnout-oct-2026', cohort_id:'74e83c5e-c7be-464e-8d22-f83a2e08f42c',
       city:'Online', date:'2026-10-12', format:'Live online', start:'08:30', end:'17:00',
-      amount:195000, earlyBird:true, ebUntil:'2026-09-11', seatsLeft:200, capped:false }
+      amount:245000, earlyBird:false, ebUntil:'2026-09-11', seatsLeft:200, capped:false }
   ];
 
   var OPTIONS = [];
@@ -324,7 +321,9 @@ src="https://www.facebook.com/tr?id=1005751582432108&ev=PageView&noscript=1"/></
       out.push({
         tour_slug: t.slug, cohort_id: c.id,
         city: c.city_name, date: c.start_date,
-        format: c.delivery_format === 'online' ? 'Live online' : c.city_name + ', in person',
+        format: c.delivery_format === 'online'
+          ? 'Live online'
+          : c.city_name + ', in person' + (c.venue_name ? ' · ' + c.venue_name : ''),
         start: (c.start_time || '08:30').slice(0, 5), end: (c.end_time || '17:00').slice(0, 5),
         amount: p.amount, earlyBird: p.earlyBird, ebUntil: p.ebUntil,
         seatsLeft: seatsLeft, capped: c.seats_total <= 40
@@ -338,7 +337,7 @@ src="https://www.facebook.com/tr?id=1005751582432108&ev=PageView&noscript=1"/></
       .then(function (tours) {
         if (!tours.length) throw new Error('no tours');
         var ids = tours.map(function (t) { return t.id; }).join(',');
-        return fetchJson('tour_cohorts?select=id,tour_id,city_name,start_date,start_time,end_time,delivery_format,seats_total,seats_filled,status,metadata&tour_id=in.(' + ids + ')&status=eq.open&order=start_date.asc')
+        return fetchJson('tour_cohorts?select=id,tour_id,city_name,start_date,start_time,end_time,delivery_format,venue_name,seats_total,seats_filled,status,metadata&tour_id=in.(' + ids + ')&status=eq.open&order=start_date.asc')
           .then(function (cohorts) { return buildOptions(tours, cohorts); });
       })
       .then(function (opts) {
