@@ -466,7 +466,7 @@ src="https://www.facebook.com/tr?id=1005751582432108&ev=PageView&noscript=1"/></
   var SUPABASE_URL = 'https://kvsirypfqtnymooxicti.supabase.co';
   var SUPABASE_ANON_KEY = 'sb_publishable_Azjgh5OVpFG2Z2oyQqt0Ig_E0tVk2W8';
   var TOUR_SLUG = 'sa-2026';
-  var EARLY_BIRD_END = '2026-09-21';
+  var EARLY_BIRD_END = '2026-09-27';
 
   // Card lines mirror public.tour_cohorts on kvsirypfqtnymooxicti:
   // start_date/end_date, act_workshop_on, act_delivery_format,
@@ -475,10 +475,10 @@ src="https://www.facebook.com/tr?id=1005751582432108&ev=PageView&noscript=1"/></
   var COHORTS = {
     johannesburg: {
       id: 'b2b78683-06b0-463c-b63c-8419f9307f94',
-      label: 'Johannesburg',
+      label: 'Johannesburg — Parktown',
       dates: '10 to 11 October 2026',
       lines: [
-        ['Intensive days', '10 to 11 October 2026, in person.'],
+        ['Intensive days', '10 to 11 October 2026, in person in Parktown.'],
         ['ACT for Burnout', '12 October, a separate day. In person in Johannesburg or live online.'],
         ['Integration', '12 October to 6 December. Peer supervision 28 October, 18 November, 3 December.']
       ],
@@ -611,7 +611,7 @@ src="https://www.facebook.com/tr?id=1005751582432108&ev=PageView&noscript=1"/></
 
   // ── Rendering ────────────────────────────────────────────────
   function renderTierBadge() {
-    el('tierBadge').textContent = isEarlyBird() ? 'Early bird until 21 September' : 'Standard pricing';
+    el('tierBadge').textContent = isEarlyBird() ? 'Early bird until 27 September' : 'Standard pricing';
   }
 
   function renderCohorts() {
