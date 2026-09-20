@@ -832,7 +832,7 @@ src="https://www.facebook.com/tr?id=1005751582432108&ev=PageView&noscript=1"/></
   function applyPaymentVisibility() {
     var needsPayment = S.audience === 'individual' && S.cohortKey && instalmentOffered(S.cohortKey);
     show('cardPayment', needsPayment);
-    show('completeCreditHelp', needsPayment && S.programme === 'complete');
+    show('completeCreditHelp', needsPayment && S.programme === 'complete' && !isOnline(S.cohortKey));
     if (needsPayment) renderPayment();
   }
 
@@ -1013,14 +1013,35 @@ src="https://www.facebook.com/tr?id=1005751582432108&ev=PageView&noscript=1"/></
   // ── Init ─────────────────────────────────────────────────────
   renderTierBadge();
 
-  // Deep links: /register?as=corporate or ?cohort=capetown
+  // Deep links can recommend one route without removing the attendee's final
+  // payment choice. Examples:
+  //   /register?route=online
+  //   /register?route=in_person&cohort=capetown
+  //   /register?as=individual&programme=complete&cohort=online_oct10
   var q = new URLSearchParams(window.location.search);
+  var route = q.get('route');
   var as = q.get('as');
+  var programme = q.get('programme');
+  var cohort = q.get('cohort');
+
+  if (route === 'online') {
+    as = 'individual';
+    programme = 'complete';
+    cohort = cohort || 'online_oct10';
+  } else if (route === 'in_person') {
+    as = 'individual';
+    programme = 'intensive';
+  }
+
   if (as === 'corporate' || as === 'individual') setAudience(as);
-  var ck = q.get('cohort');
-  if (ck && COHORTS[ck]) {
+  if (programme === 'complete' || programme === 'intensive') {
     if (!S.audience) setAudience('individual');
-    selectCohort(ck);
+    if (S.audience === 'individual') setProgramme(programme);
+  }
+  if (cohort && COHORTS[cohort]) {
+    if (!S.audience) setAudience('individual');
+    if (S.audience === 'individual' && !S.programme) setProgramme('complete');
+    selectCohort(cohort);
   }
 })();
 </script>
