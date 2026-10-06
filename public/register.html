@@ -229,7 +229,7 @@ src="https://www.facebook.com/tr?id=1005751582432108&ev=PageView&noscript=1"/></
 
     <!-- Intro -->
     <div class="card">
-      <p class="lede">Register for <strong>The Burnout Reset</strong>. Choose the complete clinical pathway, or the two-day in-person intensive with facilitated integration and add ACT for Burnout separately if you want it.</p>
+      <p class="lede">Register for <strong>The Burnout Reset</strong>. Choose the complete clinical pathway, or the two-day intensive with facilitated integration, in person or live online, and add ACT for Burnout separately if you want it.</p>
       <ul class="inc">
         <li>The eight-session Performance Reset protocol, worked through as a clinician</li>
         <li>ACT for Burnout on Monday, 12 October is included in the complete pathway and excluded from the intensive-only option.</li>
@@ -302,7 +302,7 @@ src="https://www.facebook.com/tr?id=1005751582432108&ev=PageView&noscript=1"/></
         <button type="button" class="choice" data-programme="intensive" onclick="setProgramme('intensive')">
           <div class="choice-info">
             <div class="choice-name">Two-day intensive + integration</div>
-            <div class="choice-desc">Johannesburg or Cape Town in person. ACT for Burnout is not included and can be booked separately.</div>
+            <div class="choice-desc">Johannesburg in person or live online on 10 to 11 October. ACT for Burnout is not included and can be booked separately.</div>
           </div>
           <div class="choice-side"><div class="choice-amt">R6,950</div><div class="choice-amt-sub">or 2 &times; R3,475</div></div>
         </button>
@@ -313,12 +313,12 @@ src="https://www.facebook.com/tr?id=1005751582432108&ev=PageView&noscript=1"/></
     <!-- Format -->
     <div class="card hidden" id="cardFormat">
       <div class="stitle">Choose your format</div>
-      <p class="lede" style="margin-bottom:16px;">Choose your intensive dates and delivery format. The R6,950 intensive-only offer is available in person in Johannesburg and Cape Town; the complete pathway is also available live online.</p>
+      <p class="lede" style="margin-bottom:16px;">Choose your intensive dates and delivery format. The R6,950 intensive + integration offer is available in Johannesburg or live online on 10 to 11 October; the complete pathway remains available across the listed formats.</p>
       <div class="choice-set" id="cohortSet"></div>
       <div class="ferr" id="e-cohort" style="margin-top:10px"><svg width="11" height="11" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><line x1="12" y1="8" x2="12" y2="12"/><line x1="12" y1="16" x2="12.01" y2="16"/></svg>Choose a format.</div>
     </div>
 
-    <!-- Payment (individual, in-person only) -->
+    <!-- Payment (individual) -->
     <div class="card hidden" id="cardPayment">
       <div class="stitle">Choose how you pay</div>
       <div class="choice-set" id="paymentSet"></div>
@@ -647,7 +647,7 @@ src="https://www.facebook.com/tr?id=1005751582432108&ev=PageView&noscript=1"/></
     wrap.innerHTML = '';
     Object.keys(COHORTS).forEach(function (key) {
       var c = COHORTS[key];
-      if (S.programme === 'intensive' && c.online) return;
+      if (S.programme === 'intensive' && (key === 'capetown' || key === 'online_oct16')) return;
       var price = S.audience === 'corporate' ? corporatePerSeat(key) : individualFull(key);
       var sub = S.audience === 'corporate' ? 'per place'
         : S.programme === 'intensive' ? 'intensive-only offer'
