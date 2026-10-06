@@ -4,7 +4,7 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Register · The Burnout Reset · SA October 2026 · BurnoutOS</title>
-  <meta name="description" content="Register for The Burnout Reset, a clinician's programme. Johannesburg 10 to 11 October, Cape Town 16 to 17 October, or live online. 32 CPD points, 30 contact hours, in collaboration with PsySSA." />
+  <meta name="description" content="Register for The Burnout Reset, 10 to 11 October 2026. Johannesburg in person or live online. R6,950 once-off or 2 x R3,475." />
   <link rel="canonical" href="https://burnout-os.app/register" />
   <link rel="icon" href="/favicon.svg" type="image/svg+xml">
   <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -229,10 +229,10 @@ src="https://www.facebook.com/tr?id=1005751582432108&ev=PageView&noscript=1"/></
 
     <!-- Intro -->
     <div class="card">
-      <p class="lede">Register for <strong>The Burnout Reset</strong>. Choose the complete clinical pathway, or the two-day intensive with facilitated integration, in person or live online, and add ACT for Burnout separately if you want it.</p>
+      <p class="lede">Register for <strong>The Burnout Reset</strong>, 10 to 11 October 2026. Attend in person in Johannesburg or join live online. <strong>R6,950 once-off or 2 &times; R3,475.</strong></p>
       <ul class="inc">
         <li>The eight-session Performance Reset protocol, worked through as a clinician</li>
-        <li>ACT for Burnout on Monday, 12 October is included in the complete pathway and excluded from the intensive-only option.</li>
+        <li>ACT for Burnout on Monday, 12 October is a separate workshop and can be booked separately.</li>
         <li>Three facilitated peer supervision sessions on your own caseload. 28 October, 18 November, and 3 December, each at 08:00 SAST.</li>
         <li>32 CPD points across 30 contact hours, in collaboration with PsySSA</li>
         <li>All frameworks and worksheets to take back to practice</li>
@@ -288,32 +288,13 @@ src="https://www.facebook.com/tr?id=1005751582432108&ev=PageView&noscript=1"/></
       <div class="ferr" id="e-audience" style="margin-top:10px"><svg width="11" height="11" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><line x1="12" y1="8" x2="12" y2="12"/><line x1="12" y1="16" x2="12.01" y2="16"/></svg>Choose how you are registering.</div>
     </div>
 
-    <!-- Programme -->
-    <div class="card hidden" id="cardProgramme">
-      <div class="stitle">Choose your pathway</div>
-      <div class="choice-set">
-        <button type="button" class="choice" data-programme="complete" onclick="setProgramme('complete')">
-          <div class="choice-info">
-            <div class="choice-name">Complete clinical pathway</div>
-            <div class="choice-desc">Two intensive days, ACT for Burnout on 12 October, and three facilitated peer-supervision sessions.</div>
-          </div>
-          <span class="choice-mark">Select</span>
-        </button>
-        <button type="button" class="choice" data-programme="intensive" onclick="setProgramme('intensive')">
-          <div class="choice-info">
-            <div class="choice-name">Two-day intensive + integration</div>
-            <div class="choice-desc">Johannesburg in person or live online on 10 to 11 October. ACT for Burnout is not included and can be booked separately.</div>
-          </div>
-          <div class="choice-side"><div class="choice-amt">R6,950</div><div class="choice-amt-sub">or 2 &times; R3,475</div></div>
-        </button>
-      </div>
-      <div class="ferr" id="e-programme" style="margin-top:10px"><svg width="11" height="11" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><line x1="12" y1="8" x2="12" y2="12"/><line x1="12" y1="16" x2="12.01" y2="16"/></svg>Choose a pathway.</div>
-    </div>
+    <!-- Current offer is fixed: Burnout Reset intensive + integration -->
+    <div class="card hidden" id="cardProgramme"></div>
 
     <!-- Format -->
     <div class="card hidden" id="cardFormat">
       <div class="stitle">Choose your format</div>
-      <p class="lede" style="margin-bottom:16px;">Choose your intensive dates and delivery format. The R6,950 intensive + integration offer is available in Johannesburg or live online on 10 to 11 October; the complete pathway remains available across the listed formats.</p>
+      <p class="lede" style="margin-bottom:16px;">Choose how you will attend on 10 to 11 October. Both formats are <strong>R6,950 once-off or 2 &times; R3,475</strong>.</p>
       <div class="choice-set" id="cohortSet"></div>
       <div class="ferr" id="e-cohort" style="margin-top:10px"><svg width="11" height="11" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><line x1="12" y1="8" x2="12" y2="12"/><line x1="12" y1="16" x2="12.01" y2="16"/></svg>Choose a format.</div>
     </div>
@@ -322,7 +303,7 @@ src="https://www.facebook.com/tr?id=1005751582432108&ev=PageView&noscript=1"/></
     <div class="card hidden" id="cardPayment">
       <div class="stitle">Choose how you pay</div>
       <div class="choice-set" id="paymentSet"></div>
-      <p class="help" id="completeCreditHelp" style="margin-top:12px;">Completed the ACT for Burnout workshop already? Enter <strong>ACTCREDIT26</strong> in the promotion code field at checkout to apply your R1,950 credit. The credit applies to the Johannesburg and Cape Town in-person formats. Valid until 10 October.</p>
+      <p class="help hidden" id="completeCreditHelp"></p>
       <div class="ferr" id="e-payment" style="margin-top:10px"><svg width="11" height="11" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><line x1="12" y1="8" x2="12" y2="12"/><line x1="12" y1="16" x2="12.01" y2="16"/></svg>Choose a payment option.</div>
     </div>
 
@@ -570,7 +551,7 @@ src="https://www.facebook.com/tr?id=1005751582432108&ev=PageView&noscript=1"/></
   };
 
   // ── State ────────────────────────────────────────────────────
-  var S = { audience: null, programme: null, cohortKey: null, instalment: null };
+  var S = { audience: null, programme: 'intensive', cohortKey: null, instalment: null };
 
   // ── Helpers ──────────────────────────────────────────────────
   function isEarlyBird() {
@@ -639,7 +620,7 @@ src="https://www.facebook.com/tr?id=1005751582432108&ev=PageView&noscript=1"/></
 
   // ── Rendering ────────────────────────────────────────────────
   function renderTierBadge() {
-    el('tierBadge').textContent = isEarlyBird() ? 'Early bird until 27 September' : 'Standard pricing';
+    el('tierBadge').textContent = '10–11 October · Johannesburg + online';
   }
 
   function renderCohorts() {
@@ -647,6 +628,7 @@ src="https://www.facebook.com/tr?id=1005751582432108&ev=PageView&noscript=1"/></
     wrap.innerHTML = '';
     Object.keys(COHORTS).forEach(function (key) {
       var c = COHORTS[key];
+      if (S.audience === 'individual' && key !== 'johannesburg' && key !== 'online_oct10') return;
       if (S.programme === 'intensive' && (key === 'capetown' || key === 'online_oct16')) return;
       var price = S.audience === 'corporate' ? corporatePerSeat(key) : individualFull(key);
       var sub = S.audience === 'corporate' ? 'per place'
@@ -776,7 +758,7 @@ src="https://www.facebook.com/tr?id=1005751582432108&ev=PageView&noscript=1"/></
   // ── Flow control ─────────────────────────────────────────────
   function setAudience(a) {
     S.audience = a;
-    S.programme = a === 'corporate' ? 'complete' : null;
+    S.programme = a === 'corporate' ? 'complete' : 'intensive';
     S.cohortKey = null;
     S.instalment = null;
     Array.prototype.forEach.call(document.querySelectorAll('[data-aud]'), function (b) {
@@ -785,7 +767,7 @@ src="https://www.facebook.com/tr?id=1005751582432108&ev=PageView&noscript=1"/></
       b.querySelector('.choice-mark').textContent = on ? 'Selected' : 'Select';
     });
     clearErr('e-audience');
-    show('cardProgramme', a === 'individual');
+    show('cardProgramme', false);
     show('cardFormat', a === 'corporate');
     show('cardAttendee', a === 'individual');
     show('cardCompany', a === 'corporate');
@@ -1026,7 +1008,7 @@ src="https://www.facebook.com/tr?id=1005751582432108&ev=PageView&noscript=1"/></
 
   if (route === 'online') {
     as = 'individual';
-    programme = 'complete';
+    programme = 'intensive';
     cohort = cohort || 'online_oct10';
   } else if (route === 'in_person') {
     as = 'individual';
@@ -1040,7 +1022,7 @@ src="https://www.facebook.com/tr?id=1005751582432108&ev=PageView&noscript=1"/></
   }
   if (cohort && COHORTS[cohort]) {
     if (!S.audience) setAudience('individual');
-    if (S.audience === 'individual' && !S.programme) setProgramme('complete');
+    if (S.audience === 'individual') S.programme = 'intensive';
     selectCohort(cohort);
   }
 })();
