@@ -4,7 +4,7 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Register · The Burnout Reset · SA October 2026 · BurnoutOS</title>
-  <meta name="description" content="Register for The Burnout Reset, 10 to 11 October 2026. Johannesburg in person or live online. R6,950 once-off or 2 x R3,475." />
+  <meta name="description" content="Register for The Burnout Reset full programme: 10 to 12 October 2026 plus three facilitated supervision sessions. Johannesburg in person or live online. R6,950 once-off or 2 x R3,475." />
   <link rel="canonical" href="https://burnout-os.app/register" />
   <link rel="icon" href="/favicon.svg" type="image/svg+xml">
   <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -229,10 +229,10 @@ src="https://www.facebook.com/tr?id=1005751582432108&ev=PageView&noscript=1"/></
 
     <!-- Intro -->
     <div class="card">
-      <p class="lede">Register for <strong>The Burnout Reset</strong>, 10 to 11 October 2026. Attend in person in Johannesburg or join live online. <strong>R6,950 once-off or 2 &times; R3,475.</strong></p>
+      <p class="lede">Register for <strong>The Burnout Reset full programme</strong>: three live training days from 10 to 12 October 2026, followed by three facilitated supervision sessions. Attend in Johannesburg or join live online. <strong>R6,950 once-off or 2 &times; R3,475.</strong></p>
       <ul class="inc">
         <li>The eight-session Performance Reset protocol, worked through as a clinician</li>
-        <li>ACT for Burnout on Monday, 12 October is a separate workshop and can be booked separately.</li>
+        <li>ACT for Burnout on Monday, 12 October is included as the third live training day.</li>
         <li>Three facilitated peer supervision sessions on your own caseload. 28 October, 18 November, and 3 December, each at 08:00 SAST.</li>
         <li>32 CPD points across 30 contact hours, in collaboration with PsySSA</li>
         <li>All frameworks and worksheets to take back to practice</li>
@@ -288,13 +288,13 @@ src="https://www.facebook.com/tr?id=1005751582432108&ev=PageView&noscript=1"/></
       <div class="ferr" id="e-audience" style="margin-top:10px"><svg width="11" height="11" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><line x1="12" y1="8" x2="12" y2="12"/><line x1="12" y1="16" x2="12.01" y2="16"/></svg>Choose how you are registering.</div>
     </div>
 
-    <!-- Current offer is fixed: Burnout Reset intensive + integration -->
+    <!-- Current offer is fixed: full Burnout Reset programme -->
     <div class="card hidden" id="cardProgramme"></div>
 
     <!-- Format -->
     <div class="card hidden" id="cardFormat">
       <div class="stitle">Choose your format</div>
-      <p class="lede" style="margin-bottom:16px;">Choose how you will attend on 10 to 11 October. Both formats are <strong>R6,950 once-off or 2 &times; R3,475</strong>.</p>
+      <p class="lede" style="margin-bottom:16px;">Choose how you will attend the full programme. The 10–11 October Burnout Reset intensive and 12 October ACT for Burnout day can be attended in Johannesburg or live online. <strong>R6,950 once-off or 2 &times; R3,475.</strong></p>
       <div class="choice-set" id="cohortSet"></div>
       <div class="ferr" id="e-cohort" style="margin-top:10px"><svg width="11" height="11" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><line x1="12" y1="8" x2="12" y2="12"/><line x1="12" y1="16" x2="12.01" y2="16"/></svg>Choose a format.</div>
     </div>
@@ -758,7 +758,7 @@ src="https://www.facebook.com/tr?id=1005751582432108&ev=PageView&noscript=1"/></
   // ── Flow control ─────────────────────────────────────────────
   function setAudience(a) {
     S.audience = a;
-    S.programme = a === 'corporate' ? 'complete' : 'intensive';
+    S.programme = 'complete';
     S.cohortKey = null;
     S.instalment = null;
     Array.prototype.forEach.call(document.querySelectorAll('[data-aud]'), function (b) {
@@ -1008,7 +1008,7 @@ src="https://www.facebook.com/tr?id=1005751582432108&ev=PageView&noscript=1"/></
 
   if (route === 'online') {
     as = 'individual';
-    programme = 'intensive';
+    programme = 'complete';
     cohort = cohort || 'online_oct10';
   } else if (route === 'in_person') {
     as = 'individual';
@@ -1022,7 +1022,7 @@ src="https://www.facebook.com/tr?id=1005751582432108&ev=PageView&noscript=1"/></
   }
   if (cohort && COHORTS[cohort]) {
     if (!S.audience) setAudience('individual');
-    if (S.audience === 'individual') S.programme = 'intensive';
+    if (S.audience === 'individual') S.programme = 'complete';
     selectCohort(cohort);
   }
 })();
