@@ -437,6 +437,7 @@
 
     <div class="reg">
       <form id="regForm" novalidate>
+        <input type="text" id="reg-company-site" name="company_site" autocomplete="off" tabindex="-1" aria-hidden="true" style="position:absolute;left:-10000px;width:1px;height:1px;" />
         <h3>Register free</h3>
         <p class="sm">Monday 6 July &middot; 6:00&ndash;7:30 PM AEST &middot; live online</p>
         <div class="field">
@@ -560,6 +561,7 @@
     var payload = {
       name: fn,
       email: em,
+      company_site: val('reg-company-site'),
       role: val('role').trim(),
       meeting_load: val('meeting_load'),
       biggest_constraint: biggestConstraint,

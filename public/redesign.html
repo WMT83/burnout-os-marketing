@@ -518,6 +518,7 @@
       <p class="body-text">Phase 2 opens to each Phase 1 cohort in week 4. Join the waitlist and we will let you know when the next intake opens, along with the bundle option if you would rather commit to both.</p>
       <div class="wl-card">
         <form id="wlForm">
+          <input type="text" id="wl-company-site" name="company_site" autocomplete="off" tabindex="-1" aria-hidden="true" style="position:absolute;left:-10000px;width:1px;height:1px;" />
           <input type="text" id="wlName" placeholder="First name" autocomplete="given-name" />
           <input type="email" id="wlEmail" placeholder="Email address" autocomplete="email" />
           <input type="hidden" id="utm_source"><input type="hidden" id="utm_medium"><input type="hidden" id="utm_campaign"><input type="hidden" id="utm_content"><input type="hidden" id="utm_term"><input type="hidden" id="fbclid">
@@ -591,6 +592,7 @@
       var payload = {
         name: fn,
         email: em,
+        company_site: val('wl-company-site'),
         source: 'redesign-waitlist',
         product: 'phase2-waitlist',
         source_url: window.location.href,

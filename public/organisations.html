@@ -991,6 +991,7 @@
       </button>
 
       <div id="modal-form-wrap">
+        <input type="text" id="eq-company-site" name="company_site" autocomplete="off" tabindex="-1" aria-hidden="true" style="position:absolute;left:-10000px;width:1px;height:1px;" />
         <div class="modal-eyebrow" id="modal-eyebrow">Enquiry</div>
         <h3 id="modal-title">Get in touch</h3>
         <p class="modal-sub">Werner reviews every submission personally and responds within one business day. No sales pressure — if the Sprint is not the right fit, he will tell you that too.</p>
@@ -1140,7 +1141,7 @@
     const message = messageParts.join('\n\n') || 'Organisation enquiry submitted via /organisations page.';
 
     try {
-      await fetch(`${MARKETOS_URL}/functions/v1/receive-contact-form`, {
+      const response = await fetch(`${MARKETOS_URL}/functions/v1/receive-contact-form`, {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify({
@@ -1149,6 +1150,7 @@
           region:       'au',
           enquiry_type: 'organisation',
           message,
+          company_site: document.getElementById('eq-company-site').value,
           source_url:   window.location.href,
           metadata: {
             role:             role || null,
@@ -1159,7 +1161,14 @@
           }
         })
       });
-    } catch(_) { /* non-blocking — show success regardless */ }
+      if (!response.ok) throw new Error('enquiry_failed_' + response.status);
+    } catch(_) {
+      errEl.textContent = 'We could not send your enquiry. Please try again or email hello@burnout-os.app.';
+      errEl.style.display = 'block';
+      btn.disabled = false;
+      btn.textContent = 'Send enquiry';
+      return;
+    }
 
     document.getElementById('modal-form-wrap').style.display = 'none';
     document.getElementById('modal-done-wrap').style.display = 'block';
