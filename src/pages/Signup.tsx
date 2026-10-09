@@ -58,7 +58,9 @@ export default function Signup() {
       // which auto-invokes checkout using create-payment-intent (sets full
       // product metadata for the webhook and MarketOS integration).
       const session = authData.session;
-      if (!session) throw new Error('Session not established — please try again.');
+      if (!session) {
+        throw new Error('We could not sign you in. For the October clinician Burnout Reset, use the activation link above. Otherwise, sign in below or check your email for a confirmation link.');
+      }
 
       // Map region code to Stripe-config region key.
       // Signup uses 'au' / 'za' / 'gb'; Stripe config uses 'aud' / 'zar' / 'gbp'.
@@ -75,7 +77,7 @@ export default function Signup() {
     } catch (err: unknown) {
       const message = err instanceof Error ? err.message : 'Something went wrong. Please try again.';
       if (message.toLowerCase().includes('already registered') || message.toLowerCase().includes('already exists')) {
-        setError('An account with this email already exists. Sign in at app.burnout-os.app/auth');
+        setError('An account with this email already exists. For the October clinician Burnout Reset, use the activation link above. Otherwise, sign in below.');
       } else {
         setError(message);
       }
@@ -99,6 +101,11 @@ export default function Signup() {
     <div className="auth-page">
       <div className="auth-card">
         <div className="auth-logo">BurnoutOS</div>
+        <section className="auth-reset-access" aria-label="October clinician Burnout Reset access">
+          <strong>Joining the October clinician Burnout Reset?</strong>
+          <p>Your BurnoutOS access is included with your registration. Activate it with your booking email; there is no additional payment.</p>
+          <a href="https://app.burnout-os.app/tour/activate">Activate your included access →</a>
+        </section>
         <div className="auth-title">Start your recovery</div>
         <div className="auth-sub">8-week evidence-based programme. One-time payment. Ongoing access.</div>
 

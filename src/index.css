@@ -88,6 +88,12 @@ body { background: var(--ink); color: var(--text); font-family: var(--font-body)
 }
 .auth-logo { font-family: var(--font-head); font-size: 22px; font-weight: 800;
   color: var(--ember); margin-bottom: 32px; }
+.auth-reset-access { background: rgba(232,75,42,0.08); border: 1px solid rgba(232,75,42,0.3);
+  border-radius: 10px; padding: 16px; margin-bottom: 28px; font-size: 14px; line-height: 1.5; }
+.auth-reset-access strong { display: block; color: var(--text); margin-bottom: 6px; }
+.auth-reset-access p { color: var(--text-muted); margin: 0 0 8px; }
+.auth-reset-access a { color: var(--ember); font-weight: 600; text-decoration: none; }
+.auth-reset-access a:hover { text-decoration: underline; }
 .auth-title { font-family: var(--font-head); font-size: 28px; font-weight: 700;
   margin-bottom: 8px; }
 .auth-sub { color: var(--text-muted); font-size: 15px; margin-bottom: 32px; line-height: 1.5; }
