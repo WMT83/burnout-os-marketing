@@ -426,6 +426,7 @@
   <section id="form-section">
     <div class="form-wrap">
       <form id="contact-form" onsubmit="return submitContactForm(event)" novalidate>
+        <input type="text" id="contact-company-site" name="company_site" autocomplete="off" tabindex="-1" aria-hidden="true" style="position:absolute;left:-10000px;width:1px;height:1px;" />
 
         <div class="field-row">
           <div class="field-group">
@@ -575,6 +576,7 @@
             region: region,
             enquiry_type: enquiryType,
             message: message,
+            company_site: document.getElementById('contact-company-site').value,
             source_url: window.location.href,
             utm: extractUtm()
           })

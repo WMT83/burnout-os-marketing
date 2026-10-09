@@ -946,6 +946,7 @@
 
       <div class="form-wrap">
         <form id="coaching-form" onsubmit="return submitCoachingForm(event)" novalidate>
+          <input type="text" id="coaching-company-site" name="company_site" autocomplete="off" tabindex="-1" aria-hidden="true" style="position:absolute;left:-10000px;width:1px;height:1px;" />
 
           <div class="field-row">
             <div class="field-group">
@@ -1146,6 +1147,7 @@
             region: region,
             enquiry_type: 'coaching',
             message: message || 'No additional notes.',
+            company_site: document.getElementById('coaching-company-site').value,
             source_url: window.location.href,
             utm: extractUtm(),
             metadata: {
