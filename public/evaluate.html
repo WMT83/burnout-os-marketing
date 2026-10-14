@@ -328,99 +328,13 @@
       <div class="field" style="margin-bottom:0"><label>Any other comments</label><textarea id="otherComments" rows="2" placeholder="Anything else you would like to share..."></textarea></div>
     </div>
 
-    <!-- What's next -->
     <div class="card">
-      <div class="stitle">What&#8217;s next?</div>
-      <p style="font-size:14px;color:var(--muted);line-height:1.65;margin-bottom:16px;">Let us know if you&#8217;d like more information about any of the following.</p>
-      <div class="prog-cards" id="progCards">
-
-        <div class="prog-card" id="pc-masterclass" onclick="toggleInterest('masterclass')">
-          <div class="prog-card-info">
-            <div class="prog-card-name">Always On Masterclass</div>
-            <div class="prog-card-desc">Free live session</div>
-          </div>
-          <button type="button" class="prog-card-btn">Interested</button>
-        </div>
-
-        <div class="prog-card" id="pc-reset" onclick="toggleInterest('reset')">
-          <div class="prog-card-info">
-            <div class="prog-card-name">Phase 1: Performance Reset</div>
-            <div class="prog-card-desc">8-week group programme for burnout recovery</div>
-          </div>
-          <button type="button" class="prog-card-btn">Interested</button>
-        </div>
-
-        <div class="prog-card" id="pc-organisation" onclick="toggleInterest('organisation')">
-          <div class="prog-card-info">
-            <div class="prog-card-name">Team or Organisation Programme</div>
-            <div class="prog-card-desc">For employers running this across a team, department or leadership group</div>
-          </div>
-          <button type="button" class="prog-card-btn">Interested</button>
-        </div>
-
-        <div class="org-blk" id="orgBlk">
-          <div class="sa-lbl"><span class="sa-dot"></span><span class="sa-lbl-t">Organisation Details</span></div>
-          <p class="sa-note">So we can size the programme correctly before getting in touch.</p>
-          <div class="field">
-            <label>Organisation name<span class="req">*</span></label>
-            <input type="text" id="orgName" placeholder="Your employer or client organisation">
-            <div class="ferr" id="e-orgName"><svg width="11" height="11" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><line x1="12" y1="8" x2="12" y2="12"/><line x1="12" y1="16" x2="12.01" y2="16"/></svg>Organisation name is required.</div>
-          </div>
-          <div class="field" style="margin-bottom:0">
-            <label>Approximate headcount<span class="req">*</span></label>
-            <select id="orgSize">
-              <option value="">Select approximate headcount</option>
-              <option>Fewer than 50</option>
-              <option>50 to 249</option>
-              <option>250 to 999</option>
-              <option>1,000 to 4,999</option>
-              <option>5,000 or more</option>
-            </select>
-            <div class="ferr" id="e-orgSize"><svg width="11" height="11" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><line x1="12" y1="8" x2="12" y2="12"/><line x1="12" y1="16" x2="12.01" y2="16"/></svg>Select an approximate headcount.</div>
-          </div>
-        </div>
-
-        <div class="prog-card" id="pc-redesign" onclick="toggleInterest('redesign')">
-          <div class="prog-card-info">
-            <div class="prog-card-name">Phase 2: OS Redesign</div>
-            <div class="prog-card-desc">8-week follow-on programme — builds on the Performance Reset</div>
-          </div>
-          <button type="button" class="prog-card-btn">Interested</button>
-        </div>
-
-        <div class="prog-card" id="pc-tour" onclick="toggleInterest('tour')">
-          <div class="prog-card-info">
-            <div class="prog-card-name">SA Workshop Tour</div>
-            <div class="prog-card-desc">Live workshops in Johannesburg and Cape Town — October 2026</div>
-          </div>
-          <button type="button" class="prog-card-btn">Interested</button>
-        </div>
-
-        <div class="org-blk" id="tourBlk">
-          <div class="sa-lbl"><span class="sa-dot"></span><span class="sa-lbl-t">Tour Location</span></div>
-          <p class="sa-note">Which city would you attend? Cape Town runs subject to demand, so this tells us where to open dates.</p>
-          <div class="field" style="margin-bottom:0">
-            <label>Preferred city<span class="req">*</span></label>
-            <select id="tourCity">
-              <option value="">Select a city</option>
-              <option>Johannesburg</option>
-              <option>Cape Town</option>
-              <option>Either</option>
-            </select>
-            <div class="ferr" id="e-tourCity"><svg width="11" height="11" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><line x1="12" y1="8" x2="12" y2="12"/><line x1="12" y1="16" x2="12.01" y2="16"/></svg>Select a preferred city.</div>
-          </div>
-        </div>
-
-        <div class="prog-card" id="pc-sustain" onclick="toggleInterest('sustain')">
-          <div class="prog-card-info">
-            <div class="prog-card-name">Sustain Lab</div>
-            <div class="prog-card-desc">Monthly alumni community for ongoing support</div>
-          </div>
-          <button type="button" class="prog-card-btn">Interested</button>
-        </div>
-
-      </div>
-      <p class="interest-note">By selecting a programme, you agree to receive information about it. You can unsubscribe at any time.</p>
+      <div class="stitle">Marketing emails (optional)</div>
+      <p class="interest-note">Choose which brands you would like to hear from about courses, events and offers. These choices are optional and do not affect your evaluation or CPD record.</p>
+      <div class="consent-row"><input type="checkbox" id="marketing-burnoutos" onchange="syncEmailRequirement()"><label for="marketing-burnoutos">I would like marketing emails from BurnoutOS.</label></div>
+      <div class="consent-row"><input type="checkbox" id="marketing-act" onchange="syncEmailRequirement()"><label for="marketing-act">I would like marketing emails from Applied ACT.</label></div>
+      <div class="consent-row"><input type="checkbox" id="marketing-dbt" onchange="syncEmailRequirement()"><label for="marketing-dbt">I would like marketing emails from DBT Central.</label></div>
+      <p class="interest-note">You can unsubscribe at any time. Leaving a box unchecked keeps your current preferences. Existing opt-outs and delivery blocks remain in place.</p>
     </div>
 
     <!-- POPIA — SA only -->
@@ -698,15 +612,8 @@ function val_() {
     if (!document.getElementById('hpcsaNo').value.trim())   errs.push({id:'e-hpcsaNo',  msg:'HPCSA registration number is required.'});
     if (!document.getElementById('board').value)             errs.push({id:'e-board',     msg:'Select your professional board.'});
   }
-  if (selectedInterests.has('organisation')) {
-    if (!document.getElementById('orgName').value.trim()) errs.push({id:'e-orgName', msg:'Organisation name is required.'});
-    if (!document.getElementById('orgSize').value)        errs.push({id:'e-orgSize', msg:'Select an approximate headcount.'});
-  }
-  if (selectedInterests.has('tour') && !document.getElementById('tourCity').value) {
-    errs.push({id:'e-tourCity', msg:'Select a preferred city for the SA tour.'});
-  }
-  if (selectedInterests.size > 0 && !document.getElementById('participantEmail').value.trim()) {
-    errs.push({id:'e-participantEmail', msg:'An email address is required when you select a programme.'});
+  if (marketingBrands().length > 0 && !document.getElementById('participantEmail').value.trim()) {
+    errs.push({id:'e-participantEmail', msg:'An email address is required for marketing opt-in.'});
   }
   const unans = QUESTIONS.filter(q => !ratings[q.id]);
   if (unans.length) errs.push({id:null, msg:`${unans.length} rating question${unans.length>1?'s':''} still unanswered — highlighted below.`, ids:unans.map(q=>q.id)});
@@ -768,10 +675,9 @@ async function handleSubmit() {
     otherComments:      document.getElementById('otherComments').value || undefined,
     participantEmail:    document.getElementById('participantEmail').value.trim() || undefined,
     popiaAcknowledged:   isSA ? document.getElementById('popiaCheck').checked : undefined,
-    programmeInterests:  selectedInterests.size > 0 ? Array.from(selectedInterests).map(k => INTEREST_LABELS[k]) : undefined,
-    organisationName:    selectedInterests.has('organisation') ? document.getElementById('orgName').value.trim() : undefined,
-    organisationSize:    selectedInterests.has('organisation') ? document.getElementById('orgSize').value : undefined,
-    tourCity:            selectedInterests.has('tour') ? document.getElementById('tourCity').value : undefined,
+    marketingBrands: marketingBrands(),
+    marketingConsentVersion: 'cpd-marketing-v1',
+
   };
 
   try {
@@ -785,6 +691,12 @@ async function handleSubmit() {
       throw new Error(e.error || `Server error (${res.status})`);
     }
 
+    const result = await res.json();
+    if (result.marketingPreferenceStatus === 'pending') {
+      const note = document.createElement('p');
+      note.textContent = 'Your evaluation is saved, but your marketing opt-in could not be recorded. Please contact hello@burnout-os.app if you would like to subscribe.';
+      document.getElementById('success').appendChild(note);
+    }
     document.getElementById('formWrap').classList.add('hidden');
     document.getElementById('success').classList.add('on');
     document.getElementById('sucAct').textContent = activity;
@@ -809,46 +721,11 @@ async function handleSubmit() {
 }
 
 
-const selectedInterests = new Set();
-const INTEREST_LABELS = {
-  masterclass:  'Always On Masterclass',
-  reset:        'Phase 1: Performance Reset',
-  organisation: 'Team or Organisation Programme',
-  redesign:     'Phase 2: OS Redesign',
-  tour:         'SA Workshop Tour',
-  sustain:      'Sustain Lab',
-};
-
-const CONDITIONAL_BLOCKS = {
-  organisation: { blk: 'orgBlk',  errs: ['e-orgName','e-orgSize'] },
-  tour:         { blk: 'tourBlk', errs: ['e-tourCity'] },
-};
-
-function toggleInterest(key) {
-  const card = document.getElementById('pc-' + key);
-  const btn  = card.querySelector('.prog-card-btn');
-  if (selectedInterests.has(key)) {
-    selectedInterests.delete(key);
-    card.classList.remove('selected');
-    btn.textContent = 'Interested';
-  } else {
-    selectedInterests.add(key);
-    card.classList.add('selected');
-    btn.textContent = 'Selected';
-  }
-  const cb = CONDITIONAL_BLOCKS[key];
-  if (cb) {
-    const on = selectedInterests.has(key);
-    document.getElementById(cb.blk).classList.toggle('on', on);
-    if (!on) cb.errs.forEach(id => document.getElementById(id).classList.remove('on'));
-  }
-  syncEmailRequirement();
+function marketingBrands() {
+  return ['burnoutos', 'act', 'dbt'].filter(brand => document.getElementById('marketing-' + brand).checked);
 }
-
-// Email is optional for feedback alone, but required the moment someone asks
-// to hear about a programme. Without it the selection cannot be actioned.
 function syncEmailRequirement() {
-  const needed = selectedInterests.size > 0;
+  const needed = marketingBrands().length > 0;
   document.getElementById('emailOpt').style.display = needed ? 'none' : '';
   document.getElementById('emailReq').style.display = needed ? '' : 'none';
   if (!needed) document.getElementById('e-participantEmail').classList.remove('on');
