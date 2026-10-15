@@ -490,7 +490,7 @@
         <input type="hidden" name="utm_term" id="utm_term">
         <input type="hidden" name="fbclid" id="fbclid">
         <button type="submit" class="cta">Save my seat <span class="arr">&rarr;</span></button>
-        <p class="fine">You'll receive the joining link, your Burnout Baseline preparation, and the recording afterward. See our <a href="/privacy-policy">privacy policy</a>. No spam.</p>
+        <p class="fine">First, verify your email using the link we send you. We'll then send your masterclass access details. See our <a href="/privacy-policy">privacy policy</a>. No spam.</p>
         <p class="fine" id="regError" style="display:none;color:var(--ember)">Something went wrong saving your seat. Please try again, or email <a href="mailto:hello@burnout-os.app">hello@burnout-os.app</a>.</p>
       </form>
       <div class="confirm" id="regConfirm">
@@ -584,10 +584,11 @@
         body: JSON.stringify(payload)
       });
       var result = await res.json();
-      if(!res.ok || result.status !== 'registered') throw new Error('register_failed_' + res.status);
-      if(window.fbq) fbq('track','Lead');
+      if(!res.ok || ['registered','verification_required'].indexOf(result.status) === -1) throw new Error('register_failed_' + res.status);
+      if(result.status === 'registered' && window.fbq) fbq('track','Lead');
       form.style.display = 'none';
       var confirmation = document.getElementById('regConfirm');
+      confirmation.querySelector('h3').textContent = result.status === 'verification_required' ? 'Check your inbox' : "You're registered";
       confirmation.querySelector('p').textContent = result.confirmation_message || 'Check your inbox for your masterclass access email.';
       confirmation.classList.add('show');
     }catch(err){

@@ -1,0 +1,70 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="robots" content="noindex,nofollow">
+  <meta name="referrer" content="no-referrer">
+  <title>Verify your email · BurnoutOS</title>
+  <style>
+    *{box-sizing:border-box}body{margin:0;background:#f5f2ed;color:#232c2a;font:17px/1.6 system-ui,sans-serif;min-height:100vh;display:grid;place-items:center;padding:24px}main{background:white;max-width:580px;width:100%;padding:clamp(24px,6vw,48px);border:1px solid #deded7;border-radius:16px}header{font-weight:750;font-size:23px;letter-spacing:-.7px;margin-bottom:32px}header span{color:#426958}h1{font-size:clamp(28px,6vw,36px);line-height:1.2;letter-spacing:-1px;margin:0 0 20px}p{margin:16px 0}button,.link{font:inherit;display:inline-block;border:0;border-radius:6px;padding:14px 22px;background:#234d3e;color:white;font-weight:650;cursor:pointer;text-decoration:none}button:disabled{opacity:.6;cursor:wait}button:focus-visible,a:focus-visible{outline:3px solid #b06a20;outline-offset:4px}.note{font-size:14px;color:#59645e}.support{font-size:14px;margin-top:28px}.support a{color:#234d3e}#next[hidden],button[hidden]{display:none}
+  </style>
+</head>
+<body>
+<main>
+  <header>Burnout<span>OS</span></header>
+  <h1 id="title">Verify your email</h1>
+  <p id="message" role="status" aria-live="polite">Select Verify email to finish your masterclass registration and create your learning account.</p>
+  <button id="verify" type="button">Verify email</button>
+  <p id="next" hidden><a class="link" href="/masterclass.html">Return to registration</a></p>
+  <p class="note">This confirms your course request only. Your marketing preferences stay as they are. You won't need to set up two-factor authentication.</p>
+  <p class="support">Need help? <a href="mailto:hello@burnout-os.app">hello@burnout-os.app</a></p>
+  <noscript><p>Enable JavaScript to verify your email, or contact hello@burnout-os.app for help.</p></noscript>
+</main>
+<script>
+  (function(){
+    'use strict';
+    var token = new URLSearchParams(location.hash.slice(1)).get('token');
+    // Keep the bearer token out of subsequent URLs, referrers and analytics.
+    history.replaceState(null, '', location.pathname);
+    var button=document.getElementById('verify');
+    var title=document.getElementById('title');
+    var message=document.getElementById('message');
+    var next=document.getElementById('next');
+    if(!token || !/^[0-9a-f-]{36}\.[0-9a-f]{64}$/.test(token)){
+      title.textContent='Request a new verification link';
+      message.textContent='This link is missing or invalid. Return to registration and enter your email to request a new link.';
+      button.hidden=true;next.hidden=false;return;
+    }
+    // Loading the page, including an email scanner visit, has no side effects.
+    button.addEventListener('click',async function(){
+      button.disabled=true;button.textContent='Verifying…';
+      try{
+        var response=await fetch('https://ewictbfujvtfjqomdalq.supabase.co/functions/v1/receive-masterclass-registration',{
+          method:'POST',headers:{'Content-Type':'application/json'},body:JSON.stringify({action:'confirm',token:token})
+        });
+        var result=await response.json();
+        if(!response.ok || result.status!=='registered'){
+          if(result.code==='invalid_or_expired_link'){
+            title.textContent='Request a new verification link';message.textContent=result.message;
+            button.hidden=true;next.hidden=false;return;
+          }
+          if(result.code==='registration_failed' || result.code==='registration_processing'){
+            title.textContent=result.code==='registration_failed'?'Please request a new link':'Registration is being processed';
+            message.textContent=result.message;button.hidden=true;
+            next.hidden=result.code==='registration_processing';return;
+          }
+          throw new Error(result.message || 'We could not finish your registration. Please try again, or contact hello@burnout-os.app.');
+        }
+        title.textContent='Your email is verified';
+        message.textContent=result.confirmation_message || 'Your registration is complete. Check your inbox for your masterclass access details.';
+        button.hidden=true;
+      }catch(error){
+        message.textContent=error.message || 'Please try again, or contact hello@burnout-os.app.';
+        button.disabled=false;button.textContent='Try again';
+      }
+    });
+  })();
+</script>
+</body>
+</html>
