@@ -496,7 +496,7 @@
       <div class="confirm" id="regConfirm">
         <div class="tick">&#10003;</div>
         <h3>You're registered</h3>
-        <p>Check your inbox for the joining link and your Burnout Baseline preparation. See you on 6 July.</p>
+        <p>Check your inbox for your masterclass access email.</p>
       </div>
     </div>
 
@@ -583,10 +583,13 @@
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify(payload)
       });
-      if(!res.ok) throw new Error('register_failed_' + res.status);
+      var result = await res.json();
+      if(!res.ok || result.status !== 'registered') throw new Error('register_failed_' + res.status);
       if(window.fbq) fbq('track','Lead');
       form.style.display = 'none';
-      document.getElementById('regConfirm').classList.add('show');
+      var confirmation = document.getElementById('regConfirm');
+      confirmation.querySelector('p').textContent = result.confirmation_message || 'Check your inbox for your masterclass access email.';
+      confirmation.classList.add('show');
     }catch(err){
       if(btn){ btn.disabled = false; btn.style.opacity = '1'; btn.innerHTML = label; }
       if(errEl) errEl.style.display = 'block';
