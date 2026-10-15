@@ -584,6 +584,7 @@
         body: JSON.stringify(payload)
       });
       var result = await res.json();
+      if(!res.ok && errEl) errEl.textContent = result.message || 'Something went wrong saving your seat. Please try again, or email hello@burnout-os.app.';
       if(!res.ok || ['registered','verification_required'].indexOf(result.status) === -1) throw new Error('register_failed_' + res.status);
       if(result.status === 'registered' && window.fbq) fbq('track','Lead');
       form.style.display = 'none';
