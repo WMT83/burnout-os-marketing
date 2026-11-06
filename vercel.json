@@ -189,6 +189,11 @@
       "source": "/workshop/registration-success",
       "destination": "/workshop-registration-success.html",
       "permanent": false
+    },
+    {
+      "source": "/training",
+      "destination": "/training.html",
+      "permanent": false
     }
   ],
   "rewrites": [
